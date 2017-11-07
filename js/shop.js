@@ -40,8 +40,8 @@ $(document).ready(() => {
         });
 
         $(".purchase-button").click(function() {
-            const itemId = $(this).data("item_id");
-            const item = items.find((item) => item.id === itemId);
+            const itemId = $(this).data("item-id");
+            const item = items.find((item) => item.item_id === itemId);
             SDK.Items.addToBasket(item);
             $("#purchase-modal").modal("toggle");
         });
@@ -54,7 +54,7 @@ $(document).ready(() => {
         basket.forEach((entry) => {
             $modalTbody.append(`
         <tr>
-            <td>${entry.item.title}</td>
+            <td>${entry.item.itemName}</td>
             <td>${entry.count}</td>
             <td>kr. ${entry.item.itemPrice}</td>
             <td>kr. 0</td>
