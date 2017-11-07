@@ -1,0 +1,323 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+*, *:before, *:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100vh;
+}
+
+body {
+    font: 14px/1 'Open Sans', sans-serif;
+    color: #555;
+    background: #F2F1F8;
+}
+
+h1 {
+    padding: 50px 0;
+    font-weight: 400;
+    text-align: center;
+}
+
+p {
+    margin: 0 0 20px;
+    line-height: 1.5;
+}
+
+main {
+    min-width: 320px;
+    max-width: 800px;
+    padding: 50px;
+    margin: 0 auto;
+    background: #fff;
+}
+
+section {
+    display: none;
+    padding: 20px 0 0;
+    border-top: 1px solid #ddd;
+}
+
+input {
+    display: none;
+}
+
+label {
+    display: inline-block;
+    margin: 0 0 -1px;
+    padding: 15px 25px;
+    font-weight: 600;
+    text-align: center;
+    color: #bbb;
+    border: 1px solid transparent;
+}
+
+label:before {
+    font-family: fontawesome;
+    font-weight: normal;
+    margin-right: 10px;
+}
+
+label[for*='1']:before {
+    content: '\f0f5';
+}
+
+label[for*='2']:before {
+    content: '\f0f4';
+}
+
+label[for*='3']:before {
+    content: '\f007';
+}
+
+label[for*='5']:before {
+    content: '\f1fd';
+}
+
+label:hover {
+    color: #888;
+    cursor: pointer;
+}
+
+input:checked + label {
+    color: #555;
+    border: 1px solid #ddd;
+    border-top: 2px solid #4d6aa9;
+    border-bottom: 1px solid #fff;
+}
+
+#tab1:checked ~ #content1,
+#tab2:checked ~ #content2,
+#tab3:checked ~ #content3,
+#tab4:checked ~ #content4 {
+    display: block;
+}
+
+@media screen and (max-width: 650px) {
+    label {
+        font-size: 0;
+    }
+
+    label:before {
+        margin: 0;
+        font-size: 18px;
+    }
+}
+@media screen and (max-width: 400px) {
+    label {
+        padding: 15px;
+    }
+}
+
+.itemBox{
+    width: 250px;
+    height: 250px;
+    margin: 25px;
+    padding-top: 20px;
+    background-color: #FFF;
+    border-radius: 5px;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, .3);
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+    transform: scale(1);
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: #000;
+}
+
+.menu{
+    display: flex;
+    flex-wrap: wrap;
+    width: 75%;
+    flex: right;
+}
+
+.basketBox{
+    width: 25%;
+    height: 85.5%;
+    margin-right: 15px;
+    margin-left: 15px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    background-color: #FFF;
+    border-radius: 5px;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, .3);
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+    transform: scale(1);
+    display:flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    flex-direction: column;
+    position: fixed;
+    top: 2em;
+    right: 1em;
+}
+
+.basketBox2{
+    width: 100%;
+    height: 100%;
+    margin-right: 15px;
+    margin-left: 15px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+    transform: scale(1);
+    display:flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    flex-direction: column;
+
+}
+
+.addToCartBtn{
+    border: 2px solid rgba(77, 106, 169, .45);
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, .3);
+    height: 12%;
+    width: 60%;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #4d6aa9;
+    color: #FFF;
+    font-size: 14px;
+    margin-top: 30px;
+    cursor: pointer;
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+    transform: scale(1);
+}
+
+.addToCartBtn:hover{
+    border: 2px solid rgba(77, 106, 169, .45);
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, .3);
+    height: 12%;
+    width: 60%;
+    border-radius: 16px;
+    padding: 5px;
+    background-color: #4d6aa9;
+    color: #FFF;
+    font-size: 14px;
+    margin-top: 30px;
+    cursor: pointer;
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+    transform: scale(1.05);
+}
+
+.itemPageContainer{
+    flex: right;
+    display: flex;
+    width: 100%;
+}
+
+.basketLabel{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 10;
+}
+
+.basketLabel label {
+    color: grey;
+}
+
+.basketLabel label:before {
+    content: '\f07a';
+}
+
+.basketLabel label:hover{
+    cursor: default;
+}
+
+.basketRow {
+    display: flex;
+    width: 80%;
+    border-bottom: 1px dotted rgba(0, 0, 0, .2);
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.itemRow {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.itemRow p{
+    font-size: 0.8em;
+    margin-bottom: 0.5em;
+}
+
+.clearItem {
+    width: 25px;
+    height: 25px;
+    margin-bottom: 6px;
+    margin-left: 15px;
+    background-repeat: no-repeat;
+}
+
+.clearItem:hover {
+    cursor: pointer;
+}
+
+.subTotal{
+    bottom: 5;
+    font-size: 14px;
+}
+
+.checkoutBtn{
+    border: 2px solid rgba(77, 106, 169, .45);
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, .3);
+    height: 30%;
+    width: 60%;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #4d6aa9;
+    color: #FFF;
+    font-size: 14px;
+    margin-top: 30px;
+    cursor: pointer;
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+    transform: scale(1);
+}
+
+.checkoutBtn:hover{
+    border: 2px solid rgba(77, 106, 169, .45);
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, .3);
+    height: 30%;
+    width: 60%;
+    border-radius: 16px;
+    padding: 5px;
+    background-color: #4d6aa9;
+    color: #FFF;
+    font-size: 14px;
+    margin-top: 30px;
+    cursor: pointer;
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+    transform: scale(1.05);
+}
+
+.bottomCart{
+    width: 100%;
+    height: 20%;
+    position: absolute;
+    bottom: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

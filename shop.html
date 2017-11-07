@@ -1,0 +1,31 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="css/shop.css"/>
+</head>
+<body>
+<input id="tab1" type="radio" name="tabs" checked onclick="makeFood()">
+<label for="tab1" >Food</label>
+
+<input id="tab2" type="radio" name="tabs" onclick="makeDrinks()">
+<label for="tab2">Drinks</label>
+
+<input id="tab5" type="radio" name="tabs" onclick="makeBakery()">
+<label for="tab5">Bakery</label>
+
+<input id="tab3" type="radio" name="tabs" onclick="makeProfile()">
+<label for="tab3">Profile</label>
+
+<div class ="itemPageContainer">
+    <div id="content" class= "menu">
+    </div>
+    <div id="basket" class="basketBox">
+        <div class ="basketLabel">
+            <label>Cart</label>
+        </div>
+        <div id="basketChange" class = "basketBox2"/>
+    </div>
+
+</div>
+<script type="text/javascript" src="code/shop.js"></script>
+</body>
+</html>
