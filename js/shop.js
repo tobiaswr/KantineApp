@@ -13,9 +13,6 @@ $(document).ready(() => {
                     <h3 class="panel-title">${item.itemName}</h3>
                 </div>
                 <div class="panel-body">
-                    <div class="col-lg-4">
-                        <img src="${item.imgUrl}"/>
-                    </div>
                     <div class="col-lg-8">
                       <dl>
                         <dt>Description</dt>
@@ -29,7 +26,7 @@ $(document).ready(() => {
                             <p>Kr. <span class="price-amount">${item.itemPrice}</span></p>
                         </div>
                         <div class="col-lg-8 text-right">
-                            <button class="btn btn-success purchase-button" data-item-id="${item.item_id}">Add to basket</button>
+                            <button class="btn btn-success purchase-button" data-item-id="${item.itemId}">Add to basket</button>
                         </div>
                     </div>
                 </div>
@@ -41,7 +38,7 @@ $(document).ready(() => {
 
         $(".purchase-button").click(function() {
             const itemId = $(this).data("item-id");
-            const item = items.find((item) => item.item_id === itemId);
+            const item = items.find((item) => item.itemId === itemId);
             SDK.Items.addToBasket(item);
             $("#purchase-modal").modal("toggle");
         });
@@ -54,6 +51,7 @@ $(document).ready(() => {
         basket.forEach((entry) => {
             $modalTbody.append(`
         <tr>
+            <td></td>
             <td>${entry.item.itemName}</td>
             <td>${entry.count}</td>
             <td>kr. ${entry.item.itemPrice}</td>

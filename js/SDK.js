@@ -78,7 +78,7 @@ Items:{
             }]);
         }
 
-        let foundItem = basket.find(i => i.item.id === item.id);
+        let foundItem = basket.find(i => i.item.itemId === item.itemId);
         if (foundItem) {
             let i = basket.indexOf(foundItem);
             basket[i].count++;
