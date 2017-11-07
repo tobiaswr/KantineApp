@@ -3,7 +3,6 @@ const SDK = {
     serverURL: "http://localhost:8080/api",
     request: (options,cb) =>{
 
-    //håndter headers på options argument
     let headers = {};
 if (options.headers) {
     Object.keys(options.headers).forEach(function (h) {
@@ -69,6 +68,29 @@ Orders:{
     })
     }},
 Items:{
+    addToBasket: (item) => {
+        let basket = SDK.Storage.load("basket");
+
+        if (!basket) {
+            return SDK.Storage.persist("basket", [{
+                count: 1,
+                item: item
+            }]);
+        }
+
+        let foundItem = basket.find(i => i.item.id === item.id);
+        if (foundItem) {
+            let i = basket.indexOf(foundItem);
+            basket[i].count++;
+        } else {
+            basket.push({
+                count: 1,
+                item: item
+            });
+        }
+
+        SDK.Storage.persist("basket", basket);
+    },
     getAll: (cb) => {
         SDK.request({
                 method:"GET",
@@ -79,7 +101,8 @@ Items:{
 
         cb(null, data);
     })
-    }},
+    }
+    },
 Users:{
     create:(username, password, cb) => {
         SDK.request({
@@ -91,8 +114,8 @@ Users:{
     },
     loadNav: (cb) => {
         $("#nav-container").load("nav.html", () => {
-            const currentUser = SDK.User.current();
-            if (currentUser) {
+            const currentUser = SDK.Storage.load("user_id");
+            if (currentUser > 0) {
                 $(".navbar-right").html(`
             <li><a href="my-page.html">Your orders</a></li>
             <li><a href="#" id="logout-link">Logout</a></li>
@@ -107,7 +130,8 @@ Users:{
         });
     }
 },
-logOut: (cb) => {
+
+    logOut: (cb) => {
     SDK.request({
         method:"POST",
         url:"/start/logout",
@@ -127,7 +151,8 @@ logOut: (cb) => {
 })
 
 },
-login: (username, password, cb) => {
+
+    login: (username, password, cb) => {
     SDK.request({
         method:"POST",
         url: "/start/login",

@@ -1,17 +1,17 @@
 $(document).ready(() => {
 
-    SDK.User.loadNav();
-    const $bookList = $("#book-list");
+    SDK.Users.loadNav();
+    const $itemList = $("#item-list");
 
     SDK.Items.getAll((err, items) => {
         if (err) throw err;
         items.forEach((item) => {
 
-            const bookHtml = `
+            const itemHtml = `
         <div class="col-lg-4 book-container">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">${item.name}</h3>
+                    <h3 class="panel-title">${item.itemName}</h3>
                 </div>
                 <div class="panel-body">
                     <div class="col-lg-4">
@@ -20,30 +20,30 @@ $(document).ready(() => {
                     <div class="col-lg-8">
                       <dl>
                         <dt>Subtitle</dt>
-                        <dd>${item.description}</dd>
+                        <dd>${item.itemDescription}</dd>
                       </dl>
                     </div>
                 </div>
                 <div class="panel-footer">
                     <div class="row">
                         <div class="col-lg-4 price-label">
-                            <p>Kr. <span class="price-amount">${item.price}</span></p>
+                            <p>Kr. <span class="price-amount">${item.itemPrice}</span></p>
                         </div>
                         <div class="col-lg-8 text-right">
-                            <button class="btn btn-success purchase-button" data-book-id="${book.id}">Add to basket</button>
+                            <button class="btn btn-success purchase-button" data-item-id="${item.item_id}">Add to basket</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>`;
 
-            $bookList.append(bookHtml);
+            $itemList.append(itemHtml);
         });
 
         $(".purchase-button").click(function() {
-            const bookId = $(this).data("book-id");
-            const book = books.find((book) => book.id === bookId);
-            SDK.Book.addToBasket(book);
+            const itemId = $(this).data("book-id");
+            const item = items.find((item) => item.item_id === itemId);
+            SDK.Items.addToBasket(item);
             $("#purchase-modal").modal("toggle");
         });
     });
@@ -56,11 +56,11 @@ $(document).ready(() => {
             $modalTbody.append(`
         <tr>
             <td>
-                <img src="${entry.book.imgUrl}" height="60"/>
+                <img src="${entry.item.imgUrl}" height="60"/>
             </td>
-            <td>${entry.book.title}</td>
+            <td>${entry.item.title}</td>
             <td>${entry.count}</td>
-            <td>kr. ${entry.book.price}</td>
+            <td>kr. ${entry.item.itemPrice}</td>
             <td>kr. 0</td>
         </tr>
       `);

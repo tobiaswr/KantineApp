@@ -1,21 +1,27 @@
 $(document).ready(() => {
+    $("#loginButton").on('click', (e) => {
+        e.preventDefault();
 
-    $("#login-button").click(() => {
+        $username = $("#usernameBox").val();
+        $password = $("#passwordBox").val();
 
-        const email = $("#usernameBox").val();
-        const password = $("#passwordBox").val();
-
-        SDK.User.login(email, password, (err, data) => {
-            if (err && err.xhr.status === 401) {
-                $(".loginInput").addClass("has-error");
+        SDK.login($username, $password, (error, data) => {
+            if (error) {
+                alert("You have entered an incorrect username or password.");
+                $(".loginForm .loginBox").addClass("formError");
             }
-            else if (err){
-                console.log("BAd stuff happened")
-            } else {
-                window.location.href = "my-page.html";
+            else {
+                setTimeout(loadUser, 1000);
             }
-        });
-
+        })
     });
-
 });
+
+loadUser = () => {
+    if (!SDK.Storage.load("isPersonel")) {
+        window.location.href = "my-page.html";
+    }
+    else {
+        window.location.href = "staff.html";
+    }
+};
