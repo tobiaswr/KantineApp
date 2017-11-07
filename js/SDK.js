@@ -112,23 +112,6 @@ Users:{
                 headers:{Authorization: "Bearer " + SDK.Storage.load("BearerToken")}}
             ,cb);
     },
-    loadNav: (cb) => {
-        $("#nav-container").load("nav.html", () => {
-            const currentUser = SDK.Storage.load("user_id");
-            if (currentUser > 0) {
-                $(".navbar-right").html(`
-            <li><a href="my-page.html">Your orders</a></li>
-            <li><a href="#" id="logout-link">Logout</a></li>
-          `);
-            } else {
-                $(".navbar-right").html(`
-            <li><a href="login.html">Log-in <span class="sr-only">(current)</span></a></li>
-          `);
-            }
-            $("#logout-link").click(() => SDK.User.logOut());
-            cb && cb();
-        });
-    }
 },
 
     logOut: (cb) => {
