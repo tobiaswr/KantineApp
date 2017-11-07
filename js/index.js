@@ -1,7 +1,5 @@
 $(document).ready(() => {
 
-    SDK.User.loadNav();
-
     $("#login-button").click(() => {
 
         const email = $("#usernameBox").val();

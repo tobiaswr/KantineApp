@@ -1,31 +1,77 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="css/shop.css"/>
+
+    <link rel="stylesheet" href="lib/css/bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <meta charset="UTF-8">
+    <title>Shop - DIS Bookstore 2017</title>
+
 </head>
 <body>
-<input id="tab1" type="radio" name="tabs" checked onclick="makeFood()">
-<label for="tab1" >Food</label>
 
-<input id="tab2" type="radio" name="tabs" onclick="makeDrinks()">
-<label for="tab2">Drinks</label>
+<!-- Modal -->
+<div class="modal fade" id="purchase-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog " role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Your basket</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Title</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                    </tr>
+                    </thead>
+                    <tbody id="modal-tbody">
 
-<input id="tab5" type="radio" name="tabs" onclick="makeBakery()">
-<label for="tab5">Bakery</label>
-
-<input id="tab3" type="radio" name="tabs" onclick="makeProfile()">
-<label for="tab3">Profile</label>
-
-<div class ="itemPageContainer">
-    <div id="content" class= "menu">
-    </div>
-    <div id="basket" class="basketBox">
-        <div class ="basketLabel">
-            <label>Cart</label>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <a href="checkout.html">
+                    <button type="button" class="btn btn-success">Proceed to checkout</button>
+                </a>
+            </div>
         </div>
-        <div id="basketChange" class = "basketBox2"/>
     </div>
+</div>
+
+
+<div class="container">
+
+    <div class="row" id="nav-container"></div>
+
+    <div class="page-header">
+        <h1>Shop</h1>
+    </div>
+
+    <div class="row" id="book-list">
+
+    </div>
+
 
 </div>
-<script type="text/javascript" src="code/shop.js"></script>
+
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted">2017 © All rights reserved - Kantine App YOLO.</p>
+    </div>
+</footer>
+
+<script src="lib/js/jquery-3.2.1.js"></script>
+<script src="lib/js/bootstrap.js"></script>
+<script src="js/sdk.js"></script>
+<script src="js/shop.js"></script>
+
 </body>
 </html>

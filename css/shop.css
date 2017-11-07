@@ -66,15 +66,11 @@ label[for*='1']:before {
 }
 
 label[for*='2']:before {
-    content: '\f0f4';
+    content: '\f07a';
 }
 
 label[for*='3']:before {
     content: '\f007';
-}
-
-label[for*='5']:before {
-    content: '\f1fd';
 }
 
 label:hover {
