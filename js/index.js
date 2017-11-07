@@ -1,5 +1,5 @@
 $(document).ready(() => {
-    $("#loginButton").on('click', (e) => {
+    $("#loginBtn").on('click', (e) => {
         e.preventDefault();
 
         $username = $("#usernameBox").val();
@@ -8,7 +8,6 @@ $(document).ready(() => {
         SDK.login($username, $password, (error, data) => {
             if (error) {
                 alert("You have entered an incorrect username or password.");
-                $(".loginForm .loginBox").addClass("formError");
             }
             else {
                 setTimeout(loadUser, 1000);

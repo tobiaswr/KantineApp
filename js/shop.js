@@ -1,6 +1,5 @@
 $(document).ready(() => {
 
-    SDK.Users.loadNav();
     const $itemList = $("#item-list");
 
     SDK.Items.getAll((err, items) => {
@@ -19,7 +18,7 @@ $(document).ready(() => {
                     </div>
                     <div class="col-lg-8">
                       <dl>
-                        <dt>Subtitle</dt>
+                        <dt>Description</dt>
                         <dd>${item.itemDescription}</dd>
                       </dl>
                     </div>
@@ -41,8 +40,8 @@ $(document).ready(() => {
         });
 
         $(".purchase-button").click(function() {
-            const itemId = $(this).data("book-id");
-            const item = items.find((item) => item.item_id === itemId);
+            const itemId = $(this).data("item_id");
+            const item = items.find((item) => item.id === itemId);
             SDK.Items.addToBasket(item);
             $("#purchase-modal").modal("toggle");
         });
@@ -55,9 +54,6 @@ $(document).ready(() => {
         basket.forEach((entry) => {
             $modalTbody.append(`
         <tr>
-            <td>
-                <img src="${entry.item.imgUrl}" height="60"/>
-            </td>
             <td>${entry.item.title}</td>
             <td>${entry.count}</td>
             <td>kr. ${entry.item.itemPrice}</td>

@@ -166,6 +166,7 @@ Users:{
     SDK.Storage.persist("BearerToken", data.token);
     SDK.Storage.persist("user_id", data.user_id);
     SDK.Storage.persist("isPersonel", data.isPersonel);
+    SDK.Storage.persist("currentUser", data);
 
     cb(null, data);
 })
