@@ -123,16 +123,17 @@ Users:{
         },
         data:{
             "user_id": SDK.Storage.load("user_id")
-        }}, (err, data) => {
-        if (err) return cb(err);
+        }},
+        (err, data) => {
+            if (err) return cb(err);
 
-    SDK.Storage.remove("BearerToken");
-    SDK.Storage.remove("isPersonel");
-    SDK.Storage.remove("user_id");
 
-    cb(null, data);
-})
-
+            cb(null, data);
+        })
+        SDK.Storage.remove("BearerToken");
+        SDK.Storage.remove("isPersonel");
+        SDK.Storage.remove("user_id");
+        SDK.Storage.remove("currentUser");
 },
 
     login: (username, password, cb) => {
@@ -156,11 +157,12 @@ Users:{
 },
 Storage: {
     prefix: "KantineAppSDK",
-        persist: (key, value) => {
-        window.localStorage.setItem(SDK.Storage.prefix + key, (typeof value === 'object') ? JSON.stringify(value) : value)
+
+    persist: (key, value) => {
+        sessionStorage.setItem(SDK.Storage.prefix + key, (typeof value === 'object') ? JSON.stringify(value) : value)
     },
     load: (key) => {
-        const val = window.localStorage.getItem(SDK.Storage.prefix + key);
+        const val = sessionStorage.getItem(SDK.Storage.prefix + key);
         try {
             return JSON.parse(val);
         }
@@ -169,7 +171,8 @@ Storage: {
         }
     },
     remove: (key) => {
-        window.localStorage.removeItem(SDK.Storage.prefix + key);
+        const removeKey = SDK.Storage.prefix + key;
+        sessionStorage.removeItem(removeKey);
     }
 }
 };

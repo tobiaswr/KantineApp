@@ -44,5 +44,10 @@ $(document).ready(() => {
     return total;
   }
 
+  $("#logoutBtn").click(function() {
+    SDK.logOut();
+    window.location.href = "index.html";
+  });
+
 
 });

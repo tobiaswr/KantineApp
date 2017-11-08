@@ -49,13 +49,14 @@ $(document).ready(() => {
         const $modalTbody = $("#modal-tbody");
         $modalTbody.empty();
         basket.forEach((entry) => {
+            const total = entry.item.itemPrice * entry.count;
             $modalTbody.append(`
         <tr>
             <td></td>
             <td>${entry.item.itemName}</td>
             <td>${entry.count}</td>
             <td>kr. ${entry.item.itemPrice}</td>
-            <td>kr. 0</td>
+            <td>kr. ${total}</td>
         </tr>
       `);
         });
