@@ -57,8 +57,16 @@ $(document).ready(() => {
             <td>${entry.count}</td>
             <td>kr. ${entry.item.itemPrice}</td>
             <td>kr. ${total}</td>
+            <td>
+                <button type="button" class="btn btn-default remove-button" data-item-id="${entry.item.itemId}">Remove</button>
+            </td>
         </tr>
       `);
+        });
+
+        $(".remove-button").click(function(){
+            const itemId = $(this).data("item-id");
+            SDK.Items.removeFromBasket(itemId);
         });
     });
 });

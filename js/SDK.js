@@ -91,6 +91,10 @@ Items:{
 
         SDK.Storage.persist("basket", basket);
     },
+    removeFromBasket: (itemId) => {
+        let basket = SDK.Storage.load("basket");
+
+    },
     getAll: (cb) => {
         SDK.request({
                 method:"GET",
