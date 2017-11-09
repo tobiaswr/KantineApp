@@ -64,9 +64,13 @@ $(document).ready(() => {
 
     $("#checkout-button").click(() => {
         const basket = SDK.Storage.load("basket");
-        SDK.Orders.create({
-            items: basket
-            })
+        const items = [];
+        for(let i = 0; i<basket.length; i++){
+            for(let j = 0; j<basket[i].count; j++){
+                items.push(basket[i].item);
+            }
+        }
+        SDK.Orders.create(items)
         },
         (err, order) => {
             if (err) throw err;
