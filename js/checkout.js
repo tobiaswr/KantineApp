@@ -64,19 +64,18 @@ $(document).ready(() => {
 
     $("#checkout-button").click(() => {
         const basket = SDK.Storage.load("basket");
-        const items = [];
+        const selectedItems = [];
         for(let i = 0; i<basket.length; i++){
             for(let j = 0; j<basket[i].count; j++){
-                items.push(basket[i].item);
+                selectedItems.push(basket[i].item);
             }
         }
-        SDK.Orders.create(items)
-        },
-        (err, order) => {
+        SDK.Orders.create(selectedItems, (err) => {
             if (err) throw err;
             $("#order-alert-container").find(".alert-success").show();
             SDK.Storage.remove("basket");
             loadBasket();
             $nothingInBasketContainer.hide();
         });
+    });
 });
