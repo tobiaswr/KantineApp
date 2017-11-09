@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="lib/js/jquery-3.2.1.js"></script>
+    <link rel="stylesheet" href="lib/css/bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <meta charset="UTF-8">
+    <title>Checkout - Kantine App 2017</title>
+
+</head>
+<body>
+
+<div class="container">
+
+    <div class="row" id="nav-container">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Kantine App 2017</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="shop.html">Shop </a></li>
+                        <li><a href="my-page.html">Profile</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="checkout.html">Checkout</a></li>
+                        <li class="authentication-link"></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+    </div>
+
+    <div class="row" id="order-alert-container">
+        <div class="col-lg-12">
+            <div class="alert alert-success" role="alert" style="display: none">
+                <strong>Your order has been completed!</strong>
+            </div>
+        </div>
+    </div>
+
+    <div id="checkout-table-container">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="page-header">
+                    <h1>In your basket</h1>
+                </div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Title</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                    </tr>
+                    </thead>
+                    <tbody id="basket-tbody">
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-offset-6 text-right" id="checkout-actions">
+                <button class="btn btn-default btn-lg" id="clear-basket-button">Clear basket</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="nothing-in-basket-container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>No items found in basket.</h2>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted">2016 © All rights reserved - Kantine App 2017</p>
+    </div>
+</footer>
+
+<script src="lib/js/jquery-3.2.1.js"></script>
+<script src="lib/js/bootstrap.js"></script>
+<script src="js/sdk.js"></script>
+<script src="js/checkout.js"></script>
+
+</body>
+</html>
