@@ -58,7 +58,7 @@ $(document).ready(() => {
             <td>kr. ${entry.item.itemPrice}</td>
             <td>kr. ${total}</td>
             <td>
-                <button type="button" class="btn btn-default remove-button" data-item-id="${entry.item.itemId}">Remove</button>
+                <button type="button" class="btn btn-default remove-button" data-item-id="${entry.item.itemId}" data-dismiss="modal">Remove</button>
             </td>
         </tr>
       `);
@@ -67,6 +67,7 @@ $(document).ready(() => {
         $(".remove-button").click(function(){
             const itemId = $(this).data("item-id");
             SDK.Items.removeFromBasket(itemId);
+            $("#purchase-modal").modal("show");
         });
     });
 });

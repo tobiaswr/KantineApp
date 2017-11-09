@@ -93,7 +93,17 @@ Items:{
     },
     removeFromBasket: (itemId) => {
         let basket = SDK.Storage.load("basket");
-
+        for (let i = 0; i<basket.length; i++){
+            if (basket[i].item.itemId === itemId){
+                if (basket[i].count > 1){
+                    basket[i].count--;
+                }
+                else{
+                     basket.splice(i, 1);
+                }
+            }
+        }
+        SDK.Storage.persist("basket", basket);
     },
     getAll: (cb) => {
         SDK.request({
