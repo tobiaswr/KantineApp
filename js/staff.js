@@ -8,7 +8,7 @@ $(document).ready(() => {
         orders.forEach((order) =>{
             let $items = "";
             for (let i = 0; i < order.items.length; i++){
-                $items += order.items[i].itemName + "<br>";
+                $items += order.items[i].itemName + " " + order.items[i].itemPrice + " kr" + "<br>";
             }
             const orderHtml = `
             <div class="col-lg-4 book-container">
@@ -26,14 +26,22 @@ $(document).ready(() => {
                                 <dt>Items</dt>
                                 <dd>${$items}</dd>
                             </dl>
-                            <input type="button" value="Order done" id="makeOrderReady">
+                            <input type="button" value="Order done" class="btn btn-success purchase-button" id="makeOrderReady" data-order-id="${order.orderId}">
                         </div>
                     </div>
                 </div>
             </div>`;
 
-                $orderList.append(orderHtml);
+            $orderList.append(orderHtml);
+
+            $(".purchase-button").click(() => {
+                const orderId = $(this).data("item-id");
+                SDK.Orders.makeReady(orderId, (err) => {
+                    if (err) throw err;
+                    window.location.href="staff.html";
+                });
             });
+        });
     })
 
     $("#logoutBtn").click(function() {

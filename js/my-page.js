@@ -20,29 +20,24 @@ $(document).ready(() => {
   SDK.Orders.getByUserId((err, orders) => {
     if(err) throw err;
     orders.forEach(order => {
+
+        let $items = "";
+        let $total = 0;
+        for (let i = 0; i < order.items.length; i++){
+            $items += order.items[i].itemName + " " + order.items[i].itemPrice + " kr" + "<br>";
+            $total += order.items[i].itemPrice;
+        }
+
       $basketTbody.append(`
         <tr>
-            <td>${order.id}</td>
-            <td>${parseOrderItems(order.orderItems)}</td>
-            <td>kr. ${sumTotal(order.orderItems)}</td>
+            <td>${order.orderId}</td>
+            <td>${$items}</td>
+            <td>kr. ${$total}</td>
         </tr>
       `);
     });
   });
 
-  function parseOrderItems(items){
-    return items.map(item => {
-      return item.count + " x " + item.itemName
-    }).join(", ");
-  }
-
-  function sumTotal(items){
-    let total = 0;
-    items.forEach(item => {
-      total += item.count * item.itemPrice
-    });
-    return total;
-  }
 
   $("#logoutBtn").click(function() {
     SDK.logOut();

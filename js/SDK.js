@@ -38,17 +38,24 @@ Orders:{
         cb(null, data);
     })
     },
-    makeReady: (id,data, cb) => {
-        SDK.request({method:"POST", url: "/staff/makeReady/"+id, data: data, headers:{Authorization: "Bearer " + SDK.Storage.load("BearerToken")}},cb)
+    makeReady: (id, cb) => {
+        SDK.request({
+            method:"POST",
+            url: "/staff/makeReady/"+id,
+            headers:{Authorization: "Bearer " + SDK.Storage.load("BearerToken")}},
+            (err, data) => {
+            if (err) return cb(err);
+                cb(null, data);
+            })
     },
     getByUserId: (cb) => {
         SDK.request({method:"GET",
                 url: "/user/getOrdersById/"+ SDK.Storage.load("user_id"),
                 headers:{Authorization: "Bearer " + SDK.Storage.load("BearerToken")}},
-            (err, data) => {
+            (err) => {
             if (err) return cb(err);
 
-        cb(null, data);
+        cb(null);
     })
     },
     create: (items, cb) => {
@@ -63,9 +70,8 @@ Orders:{
                 headers:{Authorization: "Bearer " + SDK.Storage.load("BearerToken")}},
             (err, data) => {
             if (err) return cb(err);
-
-        cb(null, data);
-    })
+                cb(null, data);
+            })
     }},
 Items:{
     addToBasket: (item) => {
