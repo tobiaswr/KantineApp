@@ -41,7 +41,7 @@ $(document).ready(() => {
             const order = orders.find((order) => order.orderId === orderId);
             SDK.Orders.makeReady(order.orderId, (err) => {
                 if (err) throw err;
-                window.location.href="staff.html";
+                window.location.reload();
             });
         });
     })
