@@ -26,7 +26,7 @@ $(document).ready(() => {
                                 <dt>Items</dt>
                                 <dd>${$items}</dd>
                             </dl>
-                            <input type="button" value="Order done" class="btn btn-success purchase-button" id="makeOrderReady" data-order-id="${order.orderId}">
+                            <input type="button" value="Order done" class="btn btn-success approve-button" data-order-id="${order.orderId}">
                         </div>
                     </div>
                 </div>
@@ -34,12 +34,14 @@ $(document).ready(() => {
 
             $orderList.append(orderHtml);
 
-            $(".purchase-button").click(() => {
-                const orderId = $(this).data("item-id");
-                SDK.Orders.makeReady(orderId, (err) => {
-                    if (err) throw err;
-                    window.location.href="staff.html";
-                });
+        });
+
+        $(".approve-button").click(function () {
+            const orderId = $(this).data("order-id");
+            const order = orders.find((order) => order.orderId === orderId);
+            SDK.Orders.makeReady(order.orderId, (err) => {
+                if (err) throw err;
+                window.location.href="staff.html";
             });
         });
     })

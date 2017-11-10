@@ -52,10 +52,10 @@ Orders:{
         SDK.request({method:"GET",
                 url: "/user/getOrdersById/"+ SDK.Storage.load("user_id"),
                 headers:{Authorization: "Bearer " + SDK.Storage.load("BearerToken")}},
-            (err) => {
+            (err, data) => {
             if (err) return cb(err);
 
-        cb(null);
+        cb(null, data);
     })
     },
     create: (items, cb) => {

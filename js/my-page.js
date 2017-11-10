@@ -19,7 +19,7 @@ $(document).ready(() => {
 
   SDK.Orders.getByUserId((err, orders) => {
     if(err) throw err;
-    orders.forEach(order => {
+    orders.forEach((order) => {
 
         let $items = "";
         let $total = 0;
