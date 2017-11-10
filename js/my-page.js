@@ -24,7 +24,7 @@ $(document).ready(() => {
         let $items = "";
         let $total = 0;
         for (let i = 0; i < order.items.length; i++){
-            $items += order.items[i].itemName + " " + order.items[i].itemPrice + " kr" + "<br>";
+            $items += order.items[i].itemName + ", " + order.items[i].itemPrice + " kr." + "<br>";
             $total += order.items[i].itemPrice;
         }
 

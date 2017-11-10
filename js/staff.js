@@ -5,7 +5,12 @@ $(document).ready(() => {
     SDK.Orders.getAll((err, orders) => {
         if(err) throw err;
 
-        orders.forEach((order) =>{
+        function checkReady(order){
+            return order.isReady == false;
+        }
+
+        let unReadyOrders = orders.filter(checkReady);
+        unReadyOrders.forEach((order) =>{
             let $items = "";
             for (let i = 0; i < order.items.length; i++){
                 $items += order.items[i].itemName + " " + order.items[i].itemPrice + " kr" + "<br>";
