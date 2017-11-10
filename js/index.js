@@ -14,6 +14,10 @@ $(document).ready(() => {
             }
         })
     });
+
+    $("#createBtn").click(() => {
+       window.location.href = "createUser.html";
+    });
 });
 
 loadUser = () => {

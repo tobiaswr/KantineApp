@@ -32,14 +32,14 @@ $(document).ready(() => {
 
   function parseOrderItems(items){
     return items.map(item => {
-      return item.count + " x " + item.bookInfo.title
+      return item.count + " x " + item.itemName
     }).join(", ");
   }
 
   function sumTotal(items){
     let total = 0;
     items.forEach(item => {
-      total += item.count * item.bookInfo.price
+      total += item.count * item.itemPrice
     });
     return total;
   }

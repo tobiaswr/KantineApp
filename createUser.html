@@ -1,10 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+	<meta charset="utf-8">
+	<title>CBS Cantine</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="icon" type="image/icon" href="img/icon.png">
 </head>
 <body>
-
+	<section class="createUserSection">
+		<div class="createUserBox">
+			<div class="brand">
+				<img src="img/logo.png">
+			</div>
+			<div class="inputGroup">
+				<input id="usernameField" class="inputField" type="text" placeholder="Username" required>
+				<input id="passwordField" class="inputField passwordField" type="password" placeholder="Password" required>
+				<input id="confirmPasswordField" class="inputField passwordField" type="password" placeholder="Repeat password" required>
+				<input id="createUserButton" class="button" type="submit" value="Create user">
+			</div>
+			<p class="createUserAbort"><a href="index.html">Already have an user?</a></p>
+		</div>
+	</section>
+	<footer>
+		<p class="footerText">Cantine App &copy; 2017</p>
+	</footer>
+	<script type="text/javascript" src="lib/jquery.js"></script>
+	<script type="text/javascript" src="js/SDK.js"></script>
+	<script type="text/javascript" src="js/createUser.js"></script>
 </body>
 </html>
