@@ -74,6 +74,14 @@ Orders:{
             })
     }},
 Items:{
+    create:(itemName, itemDescription, itemPrice, cb) => {
+        SDK.request({
+                method:"POST",
+                url:"/staff/createItem",
+                data:{itemName:itemName, itemDescription:itemDescription, itemPrice:itemPrice},
+                headers:{Authorization: "Bearer " + SDK.Storage.load("BearerToken")}}
+            ,cb);
+    },
     addToBasket: (item) => {
         let basket = SDK.Storage.load("basket");
 
