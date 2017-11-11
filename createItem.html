@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>CBS Kantine</title>
+
     <link rel="stylesheet" href="lib/css/bootstrap.css">
-    <script src="lib/js/jquery-3.2.1.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+
+    <meta charset="UTF-8">
+    <title>Create Item - Kantine App 2017</title>
+
 </head>
 <body>
 
@@ -43,22 +47,43 @@
         </div>
     </div>
 
-    <div class="page-header">
-        <h1>Ordrer</h1>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="page-header"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-10 profile-info"></div>
+        <div class="col-lg-12">
+
+            <h3>Create Item</h3>
+            <form>
+                <div class="form-group">
+                    <label for="itemNameInput">Name</label>
+                    <input class="form-control" id="itemNameInput" placeholder="Enter item name"/>
+                    <label for="itemDescInput">Description</label>
+                    <input class="form-control" id="itemDescInput" placeholder="Enter item description"/>
+                    <label for="itemPriceInput">Price</label>
+                    <input class="form-control" id="itemPriceInput" placeholder="Enter item price (e.g 20)"/>
+                    <br>
+                    <button class="btn btn-success" id="createItemBtn" type="button">Create Item</button>
+                </div>
+            </form>
+        </div>
     </div>
 
-    <div class="row" id="order-list"></div>
-    <button class="btn btn-success purchase-button" id="logoutBtn">Log out</button>
 </div>
 
 <footer class="footer">
     <div class="container">
-        <p class="text-muted">2017 - All rights reserved - Kantine App 2017</p>
+        <p class="text-muted">2017 © All rights reserved - Kantine App YOLO.</p>
     </div>
 </footer>
 
-<script src="js/staff.js"></script>
-<script src="js/SDK.js"></script>
+<script src="lib/js/jquery-3.2.1.js"></script>
 <script src="lib/js/bootstrap.js"></script>
+<script src="js/sdk.js"></script>
+<script src="js/createItem.js"></script>
+
 </body>
 </html>
