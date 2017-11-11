@@ -78,4 +78,9 @@ $(document).ready(() => {
             $nothingInBasketContainer.hide();
         });
     });
+
+    $("#logoutBtn").click(function() {
+        SDK.logOut();
+        window.location.href = "index.html";
+    });
 });

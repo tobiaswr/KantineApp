@@ -70,4 +70,9 @@ $(document).ready(() => {
             $("#purchase-modal").modal("show");
         });
     });
+
+    $("#logoutBtn").click(function() {
+        SDK.logOut();
+        window.location.href = "index.html";
+    });
 });

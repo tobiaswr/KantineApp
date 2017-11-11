@@ -15,4 +15,9 @@ $(document).ready(() => {
             }
         });
     });
+
+    $("#logoutBtn").click(function() {
+        SDK.logOut();
+        window.location.href = "index.html";
+    });
 });
