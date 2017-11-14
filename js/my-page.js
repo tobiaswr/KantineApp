@@ -27,11 +27,19 @@ $(document).ready(() => {
             $items += order.items[i].itemName + ", " + order.items[i].itemPrice + " kr." + "<br>";
             $total += order.items[i].itemPrice;
         }
+        let $status = "";
+        if (order.isReady === true){
+            $status = "Ready";
+        }
+        else{
+            $status = "Not ready";
+        }
 
       $basketTbody.append(`
         <tr>
             <td>${order.orderId}</td>
             <td>${$items}</td>
+            <td>${$status}</td>
             <td>kr. ${$total}</td>
         </tr>
       `);

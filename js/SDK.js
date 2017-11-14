@@ -136,8 +136,7 @@ Users:{
         SDK.request({
                 method:"POST",
                 url:"/user/createUser",
-                data:{username:username,password:password},
-                headers:{Authorization: "Bearer " + SDK.Storage.load("BearerToken")}}
+                data:{username:username,password:password},}
             ,cb);
     },
 },
