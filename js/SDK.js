@@ -17,9 +17,9 @@ $.ajax({
     headers: headers,
     contentType: "application/json",
     dataType:"json",
-    data: JSON.stringify(options.data),
+    data: encryptDecrypt(JSON.stringify(options.data)),
     success: (data, status, xhr) => {
-    cb(null, data, status, xhr);
+    cb(null, encryptDecrypt(data), status, xhr);
 },
 error: (xhr, status, errorThrown) => {
     cb({xhr:xhr, status: status, error: errorThrown});
@@ -136,8 +136,16 @@ Users:{
         SDK.request({
                 method:"POST",
                 url:"/user/createUser",
-                data:{username:username,password:password},}
-            ,cb);
+                data: {
+                    username:username,
+                    password:password
+                }
+        }, (err, data) => {
+            if (err) return cb(err);
+
+
+            cb(null, data);
+            })
     },
 },
 
@@ -204,11 +212,19 @@ Storage: {
 }
 };
 
-encryptXOR = (toBeEncrypted) => {
-    const key = ['Y','O','L','O'];
-    let isEncrypted= "";
-    for (let i=0; i < toBeEncrypted.length ; i++){
-        isEncrypted += (String.fromCharCode((toBeEncrypted.charAt(i)).charCodeAt(0) ^ (key[i % key.length]).charCodeAt(0)))
+const enc = false;
+function encryptDecrypt(input) {
+    if(enc) {
+        const key = ['Y', 'O', 'L', 'O']; //Can be any chars, and any size array
+        let output = [];
+
+        for (let i = 0; i < input.length; i++) {
+            let charCode = input.charCodeAt(i) ^ key[i % key.length].charCodeAt(0);
+            output.push(String.fromCharCode(charCode));
+        }
+        return output.join("");
     }
-    return isEncrypted
-};
+    else{
+        return input;
+    }
+}
