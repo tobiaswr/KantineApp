@@ -31,6 +31,7 @@ Orders:{
         SDK.request({
                 method:"GET",
                 url: "/staff/getOrders",
+                data: SDK.Storage.load("user_id"),
                 headers:{Authorization: "Bearer " + SDK.Storage.load("BearerToken")}},
             (err, data) => {
             if (err) return cb(err);
@@ -40,21 +41,24 @@ Orders:{
     },
     makeReady: (id, cb) => {
         SDK.request({
-            method:"POST",
-            url: "/staff/makeReady/"+id,
-            headers:{Authorization: "Bearer " + SDK.Storage.load("BearerToken")}},
+                method:"POST",
+                url: "/staff/makeReady/"+id,
+                data: SDK.Storage.load("user_id"),
+                headers:{Authorization: "Bearer " + SDK.Storage.load("BearerToken")}},
             (err, data) => {
             if (err) return cb(err);
                 cb(null, data);
             })
     },
     getByUserId: (cb) => {
-        SDK.request({method:"GET",
+        SDK.request({
+                method:"GET",
                 url: "/user/getOrdersById/"+ SDK.Storage.load("user_id"),
-                headers:{Authorization: "Bearer " + SDK.Storage.load("BearerToken")}},
+                data: SDK.Storage.load("user_id"),
+                headers:{Authorization: "Bearer " + SDK.Storage.load("BearerToken")}
+            },
             (err, data) => {
             if (err) return cb(err);
-
         cb(null, data);
     })
     },
@@ -123,6 +127,7 @@ Items:{
         SDK.request({
                 method:"GET",
                 url: "/user/getItems",
+                data: SDK.Storage.load("user_id"),
                 headers:{Authorization: "Bearer " + SDK.Storage.load("BearerToken")}},
             (err, data) => {
             if (err) return cb(err);
@@ -211,16 +216,23 @@ Storage: {
     }
 },
 
+
 Encryption: {
 
     encryptDecrypt(input) {
-        var key = ['Y', 'O', 'L', 'O']; //Can be any chars, and any size array
-        var output = [];
-        for (var i = 0; i < input.length; i++) {
-            var charCode = input.charCodeAt(i) ^ key[i % key.length].charCodeAt(0);
-            output.push(String.fromCharCode(charCode));
+        var enc = true;
+        if (enc) {
+            var key = ['Y', 'O', 'L', 'O']; //Can be any chars, and any size array
+            var output = [];
+            for (var i = 0; i < input.length; i++) {
+                var charCode = input.charCodeAt(i) ^ key[i % key.length].charCodeAt(0);
+                output.push(String.fromCharCode(charCode));
+            }
+            return output.join("");
         }
-        return output.join("");
+        else{
+            return input;
+        }
     }
 }
 };
