@@ -16,10 +16,10 @@ $.ajax({
     method:options.method,
     headers: headers,
     contentType: "application/json",
-    dataType:"json",
-    data: encryptDecrypt(JSON.stringify(options.data)),
+    dataType:"text",
+    data: SDK.Encryption.encryptDecrypt(JSON.stringify(options.data)),
     success: (data, status, xhr) => {
-    cb(null, encryptDecrypt(data), status, xhr);
+    cb(null, JSON.parse(SDK.Encryption.encryptDecrypt(data)), status, xhr);
 },
 error: (xhr, status, errorThrown) => {
     cb({xhr:xhr, status: status, error: errorThrown});
@@ -209,22 +209,19 @@ Storage: {
         const removeKey = SDK.Storage.prefix + key;
         sessionStorage.removeItem(removeKey);
     }
-}
-};
+},
 
-const enc = false;
-function encryptDecrypt(input) {
-    if(enc) {
-        const key = ['Y', 'O', 'L', 'O']; //Can be any chars, and any size array
-        let output = [];
+Encryption: {
 
-        for (let i = 0; i < input.length; i++) {
-            let charCode = input.charCodeAt(i) ^ key[i % key.length].charCodeAt(0);
+    encryptDecrypt(input) {
+        var key = ['Y', 'O', 'L', 'O']; //Can be any chars, and any size array
+        var output = [];
+        for (var i = 0; i < input.length; i++) {
+            var charCode = input.charCodeAt(i) ^ key[i % key.length].charCodeAt(0);
             output.push(String.fromCharCode(charCode));
         }
         return output.join("");
     }
-    else{
-        return input;
-    }
 }
+};
+
