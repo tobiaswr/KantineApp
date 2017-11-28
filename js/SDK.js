@@ -16,7 +16,7 @@ $.ajax({
     method:options.method,
     headers: headers,
     contentType: "application/json",
-    dataType:"text",
+    dataType: "text",
     data: SDK.Encryption.encryptDecrypt(JSON.stringify(options.data)),
     success: (data, status, xhr) => {
     cb(null, JSON.parse(SDK.Encryption.encryptDecrypt(data)), status, xhr);
@@ -180,6 +180,8 @@ Users:{
     SDK.request({
         method:"POST",
         url: "/start/login",
+        headers: {
+        },
         data: {
             username:username,
             password:password
