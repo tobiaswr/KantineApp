@@ -12,7 +12,7 @@ if (options.headers) {
 
 //perform XHR
 $.ajax({
-    url:SDK.serverURL + options.url,
+    url: SDK.serverURL + options.url,
     method:options.method,
     headers: headers,
     contentType: "application/json",
@@ -32,7 +32,8 @@ Orders:{
                 method:"GET",
                 url: "/staff/getOrders",
                 data: SDK.Storage.load("user_id"),
-                headers:{Authorization: "Bearer " + SDK.Storage.load("BearerToken")}},
+                headers:{Authorization: "Bearer " + SDK.Storage.load("BearerToken")}
+                },
             (err, data) => {
             if (err) return cb(err);
 
@@ -169,7 +170,7 @@ Users:{
 
 
             cb(null, data);
-        })
+        });
         SDK.Storage.remove("BearerToken");
         SDK.Storage.remove("isPersonel");
         SDK.Storage.remove("user_id");
@@ -180,22 +181,20 @@ Users:{
     SDK.request({
         method:"POST",
         url: "/start/login",
-        headers: {
-        },
         data: {
             username:username,
             password:password
-        }
-    }, (err, data) => {
-        if (err) return cb(err);
+        }},
+        (err, data) => {
+            if (err) return cb(err);
+            SDK.Storage.persist("BearerToken", data.token);
+            SDK.Storage.persist("user_id", data.user_id);
+            SDK.Storage.persist("isPersonel", data.isPersonel);
+            SDK.Storage.persist("currentUser", data);
 
-    SDK.Storage.persist("BearerToken", data.token);
-    SDK.Storage.persist("user_id", data.user_id);
-    SDK.Storage.persist("isPersonel", data.isPersonel);
-    SDK.Storage.persist("currentUser", data);
+            cb(null, data);
 
-    cb(null, data);
-})
+        });
 },
 Storage: {
     prefix: "KantineAppSDK",
@@ -223,14 +222,19 @@ Encryption: {
 
     encryptDecrypt(input) {
         var enc = true;
-        if (enc) {
-            var key = ['Y', 'O', 'L', 'O']; //Can be any chars, and any size array
-            var output = [];
-            for (var i = 0; i < input.length; i++) {
-                var charCode = input.charCodeAt(i) ^ key[i % key.length].charCodeAt(0);
-                output.push(String.fromCharCode(charCode));
+        if(input != null) {
+            if (enc) {
+                var key = ['Y', 'O', 'L', 'O']; //Can be any chars, and any size array
+                var output = [];
+                for (var i = 0; i < input.length; i++) {
+                    var charCode = input.charCodeAt(i) ^ key[i % key.length].charCodeAt(0);
+                    output.push(String.fromCharCode(charCode));
+                }
+                return output.join("");
             }
-            return output.join("");
+            else {
+                return input;
+            }
         }
         else{
             return input;
