@@ -31,7 +31,7 @@ Orders:{
         SDK.request({
                 method:"GET",
                 url: "/staff/getOrders",
-                data: SDK.Storage.load("user_id"),
+                data: "data",
                 headers:{Authorization: "Bearer " + SDK.Storage.load("BearerToken")}
                 },
             (err, data) => {
@@ -44,7 +44,7 @@ Orders:{
         SDK.request({
                 method:"POST",
                 url: "/staff/makeReady/"+id,
-                data: SDK.Storage.load("user_id"),
+                data: "data",
                 headers:{Authorization: "Bearer " + SDK.Storage.load("BearerToken")}},
             (err, data) => {
             if (err) return cb(err);
@@ -55,7 +55,7 @@ Orders:{
         SDK.request({
                 method:"GET",
                 url: "/user/getOrdersById/"+ SDK.Storage.load("user_id"),
-                data: SDK.Storage.load("user_id"),
+                data: "data",
                 headers:{Authorization: "Bearer " + SDK.Storage.load("BearerToken")}
             },
             (err, data) => {
@@ -128,7 +128,7 @@ Items:{
         SDK.request({
                 method:"GET",
                 url: "/user/getItems",
-                data: SDK.Storage.load("user_id"),
+                data: "data",
                 headers:{Authorization: "Bearer " + SDK.Storage.load("BearerToken")}},
             (err, data) => {
             if (err) return cb(err);
