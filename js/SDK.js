@@ -222,7 +222,7 @@ Encryption: {
 
     encryptDecrypt(input) {
         var enc = true;
-        if(input != null) {
+        if(input != null || input == "") {
             if (enc) {
                 var key = ['Y', 'O', 'L', 'O']; //Can be any chars, and any size array
                 var output = [];
