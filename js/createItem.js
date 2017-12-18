@@ -1,4 +1,6 @@
 $(document).ready(() => {
+
+    //gir knappen funksjonaliteten til å hente informasjonen tastet inn og lager et item av det
     $("#createItemBtn").click(() => {
         const $itemName = $("#itemNameInput").val();
         const $itemDesc = $("#itemDescInput").val();
@@ -15,7 +17,7 @@ $(document).ready(() => {
             }
         });
     });
-
+    //logger ut brukeren
     $("#logoutBtn").click(function() {
         SDK.logOut();
         window.location.href = "index.html";

@@ -1,10 +1,11 @@
 $(document).ready(() => {
 
-
+//lager konstante variabler for enklere tilgang senere
     const $modalTbody = $("#basket-tbody");
     const $checkoutActions = $("#checkout-actions");
     const $nothingInBasketContainer = $("#nothing-in-basket-container");
 
+    //funksjon som laster inn kurven, henter data fra sessionStorage
     function loadBasket() {
         const currentUser = SDK.Storage.load("currentUser");
         const basket = SDK.Storage.load("basket") || [];
@@ -17,7 +18,7 @@ $(document).ready(() => {
         } else {
             $nothingInBasketContainer.hide();
         }
-
+        //lager basket og viser den for klienten
         basket.forEach(entry => {
             let subtotal = entry.item.itemPrice * entry.count;
             total += subtotal;
@@ -56,12 +57,12 @@ $(document).ready(() => {
     }
 
     loadBasket();
-
+    //fjerner alt fra basket
     $("#clear-basket-button").click(() => {
         SDK.Storage.remove("basket");
         loadBasket();
     });
-
+    //checker ut bestillingen
     $("#checkout-button").click(() => {
         const basket = SDK.Storage.load("basket");
         const selectedItems = [];
@@ -78,7 +79,7 @@ $(document).ready(() => {
             $nothingInBasketContainer.hide();
         });
     });
-
+    //logger ut brukeren
     $("#logoutBtn").click(function() {
         SDK.logOut();
         window.location.href = "index.html";

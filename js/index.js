@@ -1,4 +1,6 @@
 $(document).ready(() => {
+
+    //gir knappen funksjonalitet til å hente informasjonen, lage en bruker og sjekke om brukeren eksisterer
     $("#loginBtn").on('click', (e) => {
         e.preventDefault();
 
@@ -29,7 +31,7 @@ loadUser = () => {
         window.location.href = "staff.html";
     }
 };
-
+//gjør det mulig å logge inn ved å trykke enter når man har markøren i passord-boksen
 $("#passwordBox").keypress(function (e) {
     if(e.which === 13){
         $("#loginBtn").click();

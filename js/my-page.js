@@ -16,7 +16,7 @@ $(document).ready(() => {
         <dd>${userId}</dd>
      </dl>
   `);
-
+    //henter alle ordre for brukeren som er logget inn
   SDK.Orders.getByUserId((err, orders) => {
     if(err) throw err;
     orders.forEach((order) => {
@@ -46,7 +46,7 @@ $(document).ready(() => {
     });
   });
 
-
+    //logger ut brukeren
   $("#logoutBtn").click(function() {
     SDK.logOut();
     window.location.href = "index.html";

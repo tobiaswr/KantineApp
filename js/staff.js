@@ -1,7 +1,7 @@
 $(document).ready(() => {
 
     const $orderList = $("#order-list");
-
+    //henter alle ordre og sorterer ut de som ikke er ferdige og viser de for brukeren
     SDK.Orders.getAll((err, orders) => {
         if(err) throw err;
 
@@ -40,7 +40,7 @@ $(document).ready(() => {
             $orderList.append(orderHtml);
 
         });
-
+        //gjør en ordre ferdig
         $(".approve-button").click(function () {
             const orderId = $(this).data("order-id");
             const order = orders.find((order) => order.orderId === orderId);
@@ -50,7 +50,7 @@ $(document).ready(() => {
             });
         });
     })
-
+    //logger ut brukeren
     $("#logoutBtn").click(function() {
         SDK.logOut();
         window.location.href = "index.html";

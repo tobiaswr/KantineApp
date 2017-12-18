@@ -1,4 +1,6 @@
 $(document).ready(() => {
+
+    //gir knappen funksjonalitet til å hente informasjonen tastet inn og lage en bruker av det
     $("#createUserButton").click(() => {
         const $username = $("#usernameField").val();
         const $password = $("#passwordField").val();

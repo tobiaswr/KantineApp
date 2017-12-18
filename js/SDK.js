@@ -10,7 +10,7 @@ if (options.headers) {
     });
 }
 
-//perform XHR
+//oppbygning av XHRrequests
 $.ajax({
     url: SDK.serverURL + options.url,
     method:options.method,
@@ -26,6 +26,7 @@ error: (xhr, status, errorThrown) => {
 }
 });
 },
+    //resten er funksjoner for forskjellige deler av systemet, men de er alle forskjellige XHRrequests
 Orders:{
     getAll: (cb) => {
         SDK.request({
@@ -217,7 +218,7 @@ Storage: {
     }
 },
 
-
+//kryptering hentet fra KyleBanks på github, link ligger i rapport.
 Encryption: {
 
     encryptDecrypt(input) {

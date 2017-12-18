@@ -1,7 +1,7 @@
 $(document).ready(() => {
 
     const $itemList = $("#item-list");
-
+    //henter alle items fra databasen og bygger opp HTML som viser de på klientsiden
     SDK.Items.getAll((err, items) => {
         if (err) throw err;
         items.forEach((item) => {
@@ -35,7 +35,7 @@ $(document).ready(() => {
 
             $itemList.append(itemHtml);
         });
-
+        //legger til et item i basket
         $(".purchase-button").click(function() {
             const itemId = $(this).data("item-id");
             const item = items.find((item) => item.itemId === itemId);
@@ -43,7 +43,7 @@ $(document).ready(() => {
             $("#purchase-modal").modal("toggle");
         });
     });
-
+    //bygger opp basket og gjør at hva du har lagt til vises korrekt
     $("#purchase-modal").on("shown.bs.modal", () => {
         const basket = SDK.Storage.load("basket");
         const $modalTbody = $("#modal-tbody");
@@ -63,14 +63,14 @@ $(document).ready(() => {
         </tr>
       `);
         });
-
+        //fjerner et item fra basket
         $(".remove-button").click(function(){
             const itemId = $(this).data("item-id");
             SDK.Items.removeFromBasket(itemId);
             $("#purchase-modal").modal("show");
         });
     });
-
+    //logger ut brukeren
     $("#logoutBtn").click(function() {
         SDK.logOut();
         window.location.href = "index.html";
