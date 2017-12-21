@@ -159,13 +159,11 @@ Users:{
     logOut: (cb) => {
     SDK.request({
         method:"POST",
-        url:"/start/logout",
+        url:"/start/logout/" + SDK.Storage.load("BearerToken"),
         headers: {
             Authorization: 'Bearer ' + SDK.Storage.load("BearerToken")
         },
-        data:{
-            "user_id": SDK.Storage.load("user_id")
-        }},
+        },
         (err, data) => {
             if (err) return cb(err);
 
